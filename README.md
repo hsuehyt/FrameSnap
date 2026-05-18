@@ -1,452 +1,226 @@
-\# FrameSnap
-
-
+# FrameSnap
 
 Simple FFmpeg video frame extractor for Windows CMD.
 
-
-
 Extract image frames from a video file using FFmpeg.
 
+---
 
-
-\---
-
-
-
-\# 1. Install FFmpeg
-
-
+# 1. Install FFmpeg
 
 Open Windows CMD and install FFmpeg with:
 
-
-
 ```cmd
-
 winget install Gyan.FFmpeg
-
-````
-
-
+```
 
 After installation, restart CMD.
 
-
-
 Check if FFmpeg is installed correctly:
 
-
-
 ```cmd
-
 ffmpeg -version
-
 ```
 
+---
 
-
-\---
-
-
-
-\# 2. Open CMD in the video folder
-
-
+# 2. Open CMD in the video folder
 
 Place your video file in a folder.
 
-
-
 Example:
 
-
-
 ```text
-
-D:\\Videos\\
-
-&#x20;   2026-05-18 23-00-46.mp4
-
+D:\Videos\
+    2026-05-18 23-00-46.mp4
 ```
-
-
 
 Open CMD directly in that folder:
 
+## Method A (Recommended)
 
-
-\## Method A (Recommended)
-
-
-
-1\. Open the folder in Windows Explorer
-
-2\. Click the address bar
-
-3\. Type:
-
-
+1. Open the folder in Windows Explorer
+2. Click the address bar
+3. Type:
 
 ```text
-
 cmd
-
 ```
 
-
-
-4\. Press Enter
-
-
+4. Press Enter
 
 CMD will open in the current folder.
 
+---
 
-
-\---
-
-
-
-\## Method B
-
-
+## Method B
 
 Hold:
 
-
-
 ```text
-
 Shift + Right Click
-
 ```
-
-
 
 inside the folder and choose:
 
-
-
 ```text
-
 Open in Terminal
-
 ```
-
-
 
 Then type:
 
-
-
 ```cmd
-
 cmd
-
 ```
-
-
 
 to switch from PowerShell to CMD.
 
+---
 
-
-\---
-
-
-
-\# 3. Create output folder
-
-
+# 3. Create output folder
 
 ```cmd
-
 md output
-
 ```
-
-
 
 This creates a folder named:
 
-
-
 ```text
-
 output
-
 ```
 
+---
 
-
-\---
-
-
-
-\# 4. Extract frames
-
-
+# 4. Extract frames
 
 ```cmd
-
-ffmpeg -i "2026-05-18 23-00-46.mp4" -vf "fps=1" ./output/frame\_%04d.jpg
-
+ffmpeg -i "2026-05-18 23-00-46.mp4" -vf "fps=1" ./output/frame_%04d.jpg
 ```
-
-
 
 Extracted images will be saved as:
 
-
-
 ```text
-
-output/frame\_0001.jpg
-
-output/frame\_0002.jpg
-
-output/frame\_0003.jpg
-
+output/frame_0001.jpg
+output/frame_0002.jpg
+output/frame_0003.jpg
 ...
-
 ```
 
+---
 
+# Command Explanation
 
-\---
-
-
-
-\# Command Explanation
-
-
-
-\## Input video
-
-
+## Input video
 
 ```cmd
-
-\-i "2026-05-18 23-00-46.mp4"
-
+-i "2026-05-18 23-00-46.mp4"
 ```
-
-
 
 Specifies the input video file.
 
+---
 
-
-\---
-
-
-
-\## Frame rate extraction
-
-
+## Frame rate extraction
 
 ```cmd
-
-\-vf "fps=1"
-
+-vf "fps=1"
 ```
-
-
 
 Means:
 
-
-
 ```text
-
 Extract 1 frame per second
-
 ```
 
+---
 
+# Change extraction rate
 
-\---
-
-
-
-\# Change extraction rate
-
-
-
-\## 1 frame every second
-
-
+## 1 frame every second
 
 ```cmd
-
-\-vf "fps=1"
-
+-vf "fps=1"
 ```
 
+---
 
-
-\---
-
-
-
-\## 2 frames every second
-
-
+## 2 frames every second
 
 ```cmd
-
-\-vf "fps=2"
-
+-vf "fps=2"
 ```
 
+---
 
-
-\---
-
-
-
-\## 1 frame every 5 seconds
-
-
+## 1 frame every 5 seconds
 
 ```cmd
-
-\-vf "fps=1/5"
-
+-vf "fps=1/5"
 ```
 
+---
 
-
-\---
-
-
-
-\## 1 frame every 10 seconds
-
-
+## 1 frame every 10 seconds
 
 ```cmd
-
-\-vf "fps=1/10"
-
+-vf "fps=1/10"
 ```
 
+---
 
-
-\---
-
-
-
-\## 30 frames every second
-
-
+## 30 frames every second
 
 ```cmd
-
-\-vf "fps=30"
-
+-vf "fps=30"
 ```
 
+---
 
-
-\---
-
-
-
-\# Output filename format
-
-
+# Output filename format
 
 ```cmd
-
-frame\_%04d.jpg
-
+frame_%04d.jpg
 ```
-
-
 
 Means:
 
-
-
 ```text
-
-frame\_0001.jpg
-
-frame\_0002.jpg
-
-frame\_0003.jpg
-
+frame_0001.jpg
+frame_0002.jpg
+frame_0003.jpg
 ```
-
-
 
 `%04d` means 4-digit numbering.
 
+---
 
+# Example
 
-\---
-
-
-
-\# Example
-
-
-
-\## Extract 1 frame every 5 seconds
-
-
+## Extract 1 frame every 5 seconds
 
 ```cmd
-
-ffmpeg -i "video.mp4" -vf "fps=1/5" ./output/frame\_%04d.jpg
-
+ffmpeg -i "video.mp4" -vf "fps=1/5" ./output/frame_%04d.jpg
 ```
 
+---
 
+# Useful Notes
 
-\---
-
-
-
-\# Useful Notes
-
-
-
-\* Supports mp4, mov, mkv and most video formats
-
-\* JPG can be replaced with PNG
-
-
+- Supports mp4, mov, mkv and most video formats
+- JPG can be replaced with PNG
 
 Example:
 
-
-
 ```cmd
-
-ffmpeg -i "video.mp4" -vf "fps=1" ./output/frame\_%04d.png
-
+ffmpeg -i "video.mp4" -vf "fps=1" ./output/frame_%04d.png
 ```
 
+- Existing files may be overwritten if filenames are the same
 
+---
 
-\* Existing files may be overwritten if filenames are the same
-
-
-
-\---
-
-
-
-\# FFmpeg
-
-
+# FFmpeg
 
 Official website:
 
-
-
-\[https://ffmpeg.org/](https://ffmpeg.org/)
-
+https://ffmpeg.org/
