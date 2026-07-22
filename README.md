@@ -94,7 +94,7 @@ output
 # 4. Extract frames
 
 ```cmd
-ffmpeg -i "2026-05-18 23-00-46.mp4" -vf "fps=1" ./output/frame_%04d.jpg
+ffmpeg -i "2026-05-18 23-00-46.mp4" -vf "fps=4" ./output/frame_%04d.jpg
 ```
 
 Extracted images will be saved as:
